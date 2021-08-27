@@ -1,0 +1,68 @@
+---
+title: "Arkansas Lynchings Projext"
+author: "Mary Hennigan" 
+date: "8/26/2021"
+output:
+---
+
+# Part 1: Import Data, Clean It
+
+```{r include=FALSE}
+#install.packages("slider")
+#install.packages("zoo")
+#install.packages("gtools")
+# vignette("basic-usage", package="googlesheets")
+#install.packages("googledrive")
+#install.packages("googlesheets4")
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(tidyr)
+library(jsonlite)
+library(gtools)
+library(zoo)
+library(reshape2)
+library(slider)
+library(rio)
+library(dplyr)
+```
+
+#--------------------------------------------------------------------#
+#--------------------------------------------------------------------#
+#Part 1: Analysis
+#--------------------------------------------------------------------#
+#--------------------------------------------------------------------#
+
+#Import .csv from computer 
+
+```{r}
+lynchings <- rio::import("/Users/maryhennigan/Downloads/Lynching Project Fall 2021/Lynch1910_1919.csv")
+
+glimpse(lynchings)
+```
+
+```{r}
+ar_lynchings <- lynchings %>% 
+  filter(state == 'AR')
+
+ar_lynchings
+write.csv(ar_lynchings, "ar_lynchings.csv")
+
+```
+
+```{r}
+years <- ar_lynchings %>% 
+  count(year)
+write.csv(years, "years.csv")
+```
+
+
+```{r}
+county <- ar_lynchings %>% 
+  count(county)
+write.csv(county, "county.csv")
+```
+
+
+
+
