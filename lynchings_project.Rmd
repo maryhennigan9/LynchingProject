@@ -59,7 +59,8 @@ write.csv(years, "years.csv")
 
 ```{r}
 county <- ar_lynchings %>% 
-  count(county)
+  count(county) %>% 
+  arrange(n)
 write.csv(county, "county.csv")
 ```
 
