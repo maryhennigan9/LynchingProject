@@ -48,12 +48,15 @@ ar_lynchings <- lynchings %>%
 ar_lynchings
 write.csv(ar_lynchings, "ar_lynchings.csv")
 
+#Arkansas has 40 lynchings reported from 1910 - 1919
 ```
 
 ```{r}
 years <- ar_lynchings %>% 
   count(year)
 write.csv(years, "years.csv")
+
+#1919 has the most records with 10, then 1915 with seven, followed by 1911 with six.
 ```
 
 
@@ -62,6 +65,8 @@ county <- ar_lynchings %>%
   count(county) %>% 
   arrange(n)
 write.csv(county, "county.csv")
+
+#St. Francis (45 miles west of Memphis) has the most lynchings of this decade, four. Union, Lincoln and Garland counties follow with three lynchings each. 
 ```
 
 
